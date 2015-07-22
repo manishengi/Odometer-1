@@ -27,7 +27,8 @@ public:
 
 		int nextReading(int meterReading){
 			if (meterReading == getMaxReading()){
-				cout << "No greater reading possible" << endl;
+				
+				return getMinReading();
 			}
 			int nextReading = meterReading + 1;
 			while (!isValidReading(nextReading)){
@@ -41,7 +42,7 @@ public:
 		int previousReading(int meterReading){
 			if (meterReading == getMinReading()){
 				cout << "No lesser reading possible" << endl;
-				return 0;
+				return getMinReading();
 			}
 			int previousReading = meterReading - 1;
 			while (!isValidReading(previousReading)){
