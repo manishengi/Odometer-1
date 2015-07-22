@@ -1,7 +1,5 @@
 #include<iostream>
-#include<math.h>
-#include<new.h>
-#include<string>
+
 using namespace std;
 
 
@@ -11,11 +9,19 @@ class odometer{
 	int length;
 
 
-public: odometer(int s){
-	length = s;
-}
-		odometer(int s, int initialreading){
-			meterReading = initialreading;
+public: 
+		odometer(int s){
+			length = s;
+			meterReading = getMinReading();
+		}
+		
+		odometer(int s, int initialReading){
+			if(isValidReading(initialReading)){
+				meterReading = initialReading;
+			} else {
+				meterReading = getMinReading();
+			}
+			
 			length = s;
 		}
 
@@ -35,6 +41,7 @@ public: odometer(int s){
 		int previousReading(int meterReading){
 			if (meterReading == getMinReading()){
 				cout << "No lesser reading possible" << endl;
+				return 0;
 			}
 			int previousReading = meterReading - 1;
 			while (!isValidReading(previousReading)){
@@ -109,10 +116,13 @@ int main(){
 	cout << "Enter size of the odometer ";
 	cin >> odometerSize;
 	odometer odm(odometerSize);
-//test
+	cout << odm.getMinReading() << endl;
+	cout << odm.getMaxReading() << endl;
+	cout << odm.differenceBetweenReadings(1234,5678) << endl;
 	cout << odm.previousReading(1234) << endl;
-
-
+	cout << odm.nextReading(1234) << endl;
+	cout << odm.isValidReading(1274) << endl;
+	
 	return 0;
 
 }
