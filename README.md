@@ -1,2 +1,2 @@
 # Odometer
-It's a not so common odometer
+The digits in the odometer reading are in the strictly increasing form. 
